@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDNgOyhoIR6UQjDZohKTsQABw5UGYRWsKk",
-  authDomain: "himu-kitchen.firebaseapp.com",
-  projectId: "himu-kitchen",
-  storageBucket: "himu-kitchen.appspot.com",
-  messagingSenderId: "1066267182855",
-  appId: "1:1066267182855:web:8629d2a75966dcd39ba7a2",
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase
