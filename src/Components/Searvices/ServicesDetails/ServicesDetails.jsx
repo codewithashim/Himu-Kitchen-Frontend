@@ -36,16 +36,25 @@ const ServicesDetails = () => {
           </PhotoProvider>
         </div>
         <div className="card bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center">
+          <div className="card-body ">
             <h2 className="card-title text-yellow-400 font-bold text-3xl">
               {service_name}
             </h2>
             <p>{service_description}</p>
+
             <div className="flex gap-4 justify-start">
-              <span className="badge bg-primary">{service_category}</span>
-              <span className="badge bg-primary">{service_status}</span>
+              <span className=" bg-primary p-2">Category : {service_category}</span>
+              <span className=" bg-primary p-2">Status : {service_status}</span>
+              <div>
+                <span className="text-[1rem] mx-4 font-bold">
+                  Price: ৳ {service_price}
+                </span>
+              </div>
             </div>
-            <div className="flex gap-2 justify-center items-center">
+            <div className="card-actions">
+              <button className="btn btn-warning">Order Now</button>
+            </div>
+            <div className="flex gap-2 mt-2 justify-center items-center">
               <div className="rating">
                 <input
                   type="radio"
@@ -75,11 +84,14 @@ const ServicesDetails = () => {
                 />
               </div>
               <span className="badge bg-warning mx-4 font-bold">{rating}</span>
-              <div>
-                <span className="text-2xl mx-4 font-bold">
-                  Price: ৳ {service_price}
-                </span>
-              </div>
+            </div>
+
+            <div className="divider"></div>
+            <div>
+              <h2 className="text-2xl text-center font-bold text-yellow-400">
+                Give Your Valuabele Revews
+              </h2>
+              <div></div>
             </div>
             <div className="divider"></div>
             <div className="flex items-center gap-2">
@@ -92,11 +104,6 @@ const ServicesDetails = () => {
               <span className="text-2xl font-bold text-yellow-400">
                 {service_provider}
               </span>
-            </div>
-            <div className="divider"></div>
-
-            <div className="card-actions">
-              <button className="btn btn-warning">Order Now</button>
             </div>
           </div>
         </div>
