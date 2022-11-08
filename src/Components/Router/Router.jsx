@@ -6,6 +6,7 @@ import Services from "../Searvices/Searvices";
 import Blogs from "../Blogs/Blogs";
 import Login from "../../Auth/Login/Login";
 import Register from "../../Auth/Register/Register";
+import Recipes from "../Recipes/Recipes";
 
 const route = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const route = createBrowserRouter([
         element: <Blogs></Blogs>,
       },
       {
+        path: "/recipes",
+        element: <Recipes></Recipes>,
+      },
+      {
         path: "/login",
         element: <Login></Login>,
       },
@@ -36,6 +41,7 @@ const route = createBrowserRouter([
         path: "/signup",
         element: <Register></Register>,
       },
+
       {
         path: "*",
         element: <NotFound></NotFound>,

@@ -1,11 +1,9 @@
-import React from 'react';
+const { useEffect } = require("react");
 
-const UseTitle = () => {
-    return (
-        <div>
-            <h1>Hye </h1>
-        </div>
-    );
+const useTitle = (title) => {
+  useEffect(() => {
+    document.title = `${title} - Himu Kitchen`;
+  }, [title]);
 };
 
-export default UseTitle;
+export default useTitle;

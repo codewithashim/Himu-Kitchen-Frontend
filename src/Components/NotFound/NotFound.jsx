@@ -1,7 +1,9 @@
 import React from "react";
 import notfound from "../../Assets/not_found.svg";
+import useTitle from "../../Hooks/useTitle";
 
 const NotFound = () => {
+  useTitle("Not Found");
   return (
     <>
       <section>
