@@ -4,7 +4,6 @@ import "../Style/Home.css";
 import { FaPlayCircle } from "react-icons/fa";
 
 const Slider = ({ slide }) => {
-  console.log(slide);
   const { image, prev, id, next } = slide;
 
   return (

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../Assets/himu-kitechen.png";
+import { AuthContext } from "../../Context/UserContext";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
   return (
     <>
       <header>
@@ -64,31 +66,47 @@ const Header = () => {
             </ul>
           </div>
           <div className="navbar-end">
-            <div className="dropdown dropdown-end">
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img src="https://placeimg.com/80/80/people" alt="user" />
+            {user?.uid ? (
+              <>
+                <div className="dropdown dropdown-end">
+                  <label
+                    tabIndex={0}
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div className="w-10 rounded-full">
+                      <img src="https://placeimg.com/80/80/people" alt="user" />
+                    </div>
+                  </label>
+                  <ul
+                    tabIndex={0}
+                    className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                  >
+                    <li>
+                      <Link>Profile</Link>
+                      <span>@user</span>
+                    </li>
+                    <li>
+                      <Link className="justify-between">My Review</Link>
+                    </li>
+                    <li>
+                      <Link>Add Services</Link>
+                    </li>
+                    <li>
+                      <Link>Logout</Link>
+                    </li>
+                  </ul>
                 </div>
-              </label>
-              <ul
-                tabIndex={0}
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-              >
-                <li>
-                  <Link>Profile</Link>
-                  <span>@user</span>
-                </li>
-                <li>
-                  <Link className="justify-between">My Review</Link>
-                </li>
-                <li>
-                  <Link>Add Services</Link>
-                </li>
-                <li>
-                  <Link>Logout</Link>
-                </li>
-              </ul>
-            </div>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="btn btn-warning btn-outline btn-sm rounded-btn"
+                >
+                  Login
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </header>
