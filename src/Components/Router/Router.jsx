@@ -31,7 +31,7 @@ const route = createBrowserRouter([
         path: "/services/:id",
         loader: ({ params }) => {
           return fetch(
-            `https://himu-kitchen-server.vercel.app/services/${params.id}`
+            `https://himu-kitchen-server-codewithashim.vercel.app/services/${params.id}`
           );
         },
         element: <ServicesDetails></ServicesDetails>,
