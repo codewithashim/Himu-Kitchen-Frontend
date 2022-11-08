@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../Style/Home.css";
-import { FaPlayCircle } from "react-icons/fa";
+import { FaPlayCircle, FaUtensils } from "react-icons/fa";
 
 const Slider = ({ slide }) => {
   const { image, prev, id, next } = slide;
@@ -13,10 +13,10 @@ const Slider = ({ slide }) => {
           <img src={image} className="w-full" alt="Slider" />
         </div>
         <div className="absolute flex gap-4 mr-8 transform -translate-y-1/2 right-0 bottom-0">
-          <a href={`#slide${prev}`} className="btn btn-circle mr-5">
+          <a href={`#slide${prev}`} className="btn btn-circle mr-5 bg-yellow-400">
             ❮
           </a>
-          <a href={`#slide${next}`} className="btn btn-circle">
+          <a href={`#slide${next}`} className="btn btn-circle bg-yellow-400">
             ❯
           </a>
         </div>
@@ -25,7 +25,12 @@ const Slider = ({ slide }) => {
             <h1 className="text-6xl font-bold text-white">
               <span className="text-4xl mb-1"> Hey Wellcome to </span>
               <br />
-              <span className="text-yellow-400">Himu</span> Kitchen !!
+              <span className="flex">
+                <span className="text-yellow-400 mx-2">Himu</span> Kitchen
+                <span className="text-yellow-400">
+                  <FaUtensils></FaUtensils>
+                </span>
+              </span>
             </h1>
             <p className="mt-4 text-white w-3/4">
               I'm Himu ! I'm a professional chef and I have been cooking for 10

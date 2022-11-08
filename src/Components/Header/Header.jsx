@@ -1,10 +1,16 @@
 import React, { useContext } from "react";
+import {
+  FaCheckSquare,
+  FaMedapps,
+  FaPowerOff,
+  FaUserCog,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../../Assets/himu-kitechen.png";
 import { AuthContext } from "../../Context/UserContext";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   return (
     <>
       <header>
@@ -73,8 +79,8 @@ const Header = () => {
                     tabIndex={0}
                     className="btn btn-ghost btn-circle avatar"
                   >
-                    <div className="w-10 rounded-full">
-                      <img src="https://placeimg.com/80/80/people" alt="user" />
+                    <div className="w-10 rounded-full border">
+                      <img src={user.photoURL} alt="user" />
                     </div>
                   </label>
                   <ul
@@ -82,17 +88,25 @@ const Header = () => {
                     className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
                   >
                     <li>
-                      <Link>Profile</Link>
-                      <span>@user</span>
+                      <span> {user.displayName}</span>
+                      <Link to="profile">
+                        <FaUserCog className="mx-2"></FaUserCog> Profile
+                      </Link>
                     </li>
                     <li>
-                      <Link className="justify-between">My Review</Link>
+                      <Link>
+                        <FaMedapps></FaMedapps> My Review
+                      </Link>
                     </li>
                     <li>
-                      <Link>Add Services</Link>
+                      <Link>
+                        <FaCheckSquare></FaCheckSquare> Add Services
+                      </Link>
                     </li>
                     <li>
-                      <Link>Logout</Link>
+                      <Link onClick={logout}>
+                        <FaPowerOff></FaPowerOff> Logout
+                      </Link>
                     </li>
                   </ul>
                 </div>
