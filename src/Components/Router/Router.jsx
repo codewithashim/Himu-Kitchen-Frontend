@@ -7,6 +7,8 @@ import Blogs from "../Blogs/Blogs";
 import Login from "../../Auth/Login/Login";
 import Register from "../../Auth/Register/Register";
 import Recipes from "../Recipes/Recipes";
+import ServicesDetails from "../Searvices/ServicesDetails/ServicesDetails";
+import Order from "../Order/Order";
 
 const route = createBrowserRouter([
   {
@@ -26,6 +28,19 @@ const route = createBrowserRouter([
         element: <Services></Services>,
       },
       {
+        path: "/services/:id",
+        loader: ({ params }) => {
+          return fetch(
+            `https://himu-kitchen-server.vercel.app/services/${params.id}`
+          );
+        },
+        element: <ServicesDetails></ServicesDetails>,
+      },
+      {
+        path: "/order/:id",
+        element: <Order></Order>,
+      },
+      {
         path: "/blogs",
         element: <Blogs></Blogs>,
       },
@@ -41,7 +56,6 @@ const route = createBrowserRouter([
         path: "/signup",
         element: <Register></Register>,
       },
-
       {
         path: "*",
         element: <NotFound></NotFound>,

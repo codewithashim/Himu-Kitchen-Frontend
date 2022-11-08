@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaUtensils } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import useTitle from "../../Hooks/useTitle";
 import Service from "./Service/Service";
 
@@ -29,10 +30,15 @@ const Searvices = () => {
             <FaUtensils className="text-yellow-400"></FaUtensils>
           </h1>
         </div>
-        <div className="servicesContainer">
+        <div className="servicesContainer grid md:grid-cols-3 py-4">
           {services.map((service) => {
             return <Service key={service._id} service={service}></Service>;
           })}
+        </div>
+        <div className="flex justify-center items-center">
+          <Link className="btn btn-warning btn-outline" to="/services">
+            See More
+          </Link>
         </div>
       </section>
     </>
