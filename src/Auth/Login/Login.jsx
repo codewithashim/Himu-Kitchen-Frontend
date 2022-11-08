@@ -51,8 +51,13 @@ const Login = () => {
                     </Link>
                   </label>
                 </div>
-                <div className="form-control mt-6">
-                  <button type="submit" className="btn btn-primary">
+                <div>
+                  <Link to="/signup " className="btn btn-link ">
+                    I have't account Register Now
+                  </Link>
+                </div>
+                <div className="form-control mt-3">
+                  <button type="submit" className="btn btn-warning">
                     Login
                   </button>
                 </div>
