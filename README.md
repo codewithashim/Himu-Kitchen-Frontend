@@ -7,7 +7,7 @@
 
 # Site Link
 
-    # clinte side source code :
+    # clinte side source code : https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-codewithashim
 
     # server side source code : https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-codewithashim
 
@@ -20,3 +20,6 @@
 
 # What Functionality Abailabel In My Website
 
+firebase init
+firebase deploy
+require('crypto').randomBytes(65).toString('hex')
