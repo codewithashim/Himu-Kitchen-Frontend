@@ -1,14 +1,14 @@
 import React from "react";
-import { FaFacebookF, FaGoogle, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import login from "../../Assets/auth_img.svg";
 import useTitle from "../../Hooks/useTitle";
-// import UseFirebase from "../../Hooks/UseFirebase";
+import UseFirebase from "../../Hooks/UseFirebase";
 
 const Register = () => {
   useTitle("Register");
-  // const { handelGoogleLogin, handelFacebookLogin, handelEmailSignUp } =
-  //   UseFirebase();
+  const { handelGoogleLogin, handelFacebookLogin, handelEmailSignUp } =
+    UseFirebase();
   return (
     <section>
       <div className="hero min-h-screen w-full mx-auto bg-base-200">
@@ -18,7 +18,7 @@ const Register = () => {
           </div>
 
           <div className="md:w-3/4 border rounded p-6 shadow">
-            <form action="">
+            <form action="" onSubmit={(event) => handelEmailSignUp(event)}>
               <div>
                 <h2 className="card-title text-center">Sign Up</h2>
               </div>
@@ -89,17 +89,11 @@ const Register = () => {
               </div>
             </form>
             <div className="socialLogin flex justify-center items-center gap-2 mt-3">
-              <Link>
+              <Link onClick={handelGoogleLogin}>
                 <FaGoogle className="text-4xl hover:-translate-y-1 transition-all bg-blue-300 text-white p-2 rounded-full"></FaGoogle>
               </Link>
-              <Link>
+              <Link onClick={handelFacebookLogin}>
                 <FaFacebookF className="text-4xl hover:-translate-y-1 transition-all  bg-blue-300 text-white p-2 rounded-full"></FaFacebookF>
-              </Link>
-              <Link>
-                <FaTwitter className="text-4xl hover:-translate-y-1 transition-all  bg-blue-300 text-white p-2 rounded-full"></FaTwitter>
-              </Link>
-              <Link>
-                <FaLinkedin className="text-4xl hover:-translate-y-1 transition-all  bg-blue-300 text-white p-2 rounded-full"></FaLinkedin>
               </Link>
             </div>
           </div>

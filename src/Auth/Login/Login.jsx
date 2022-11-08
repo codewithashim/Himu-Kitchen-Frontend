@@ -1,12 +1,19 @@
 import React from "react";
-import { FaUserShield } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaGoogle,
+  FaUserShield,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useTitle from "../../Hooks/useTitle";
 import "../Styles/AuthStyles.css";
 import authImg from "../../Assets/auth_img.svg";
+import UseFirebase from "../../Hooks/UseFirebase";
 
 const Login = () => {
   useTitle("Login");
+  const { handelGoogleLogin, handelFacebookLogin, handelEmailSignIn } =
+    UseFirebase();
   return (
     <>
       <div className="hero min-h-screen bg-base-200">
@@ -21,7 +28,7 @@ const Login = () => {
                 Login <FaUserShield></FaUserShield>
               </h2>
 
-              <form action="">
+              <form action="" onSubmit={(event) => handelEmailSignIn(event)}>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>
@@ -62,6 +69,14 @@ const Login = () => {
                   </button>
                 </div>
               </form>
+              <div className="socialLogin flex justify-center items-center gap-2 mt-3">
+                <Link onClick={handelGoogleLogin}>
+                  <FaGoogle className="text-4xl hover:-translate-y-1 transition-all bg-blue-300 text-white p-2 rounded-full"></FaGoogle>
+                </Link>
+                <Link onClick={handelFacebookLogin}>
+                  <FaFacebookF className="text-4xl hover:-translate-y-1 transition-all  bg-blue-300 text-white p-2 rounded-full"></FaFacebookF>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
