@@ -3,7 +3,7 @@ import { AuthContext } from "../../Context/UserContext";
 import RevewsDetails from "./RevewsDetails/RevewsDetails";
 
 const Revews = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [revews, setRevews] = useState([]);
 
   const hendelRevews = (e) => {
@@ -77,9 +77,7 @@ const Revews = () => {
           </h2>
           <div>
             {allRevews?.map((revew) => {
-              return(
-                <RevewsDetails revew={revew}></RevewsDetails>
-              )
+              return <RevewsDetails revew={revew}></RevewsDetails>;
             })}
           </div>
         </div>

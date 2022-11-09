@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { FaUtensils } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
 
 import useTitle from "../../Hooks/useTitle";
 import Service from "./Service/Service";
