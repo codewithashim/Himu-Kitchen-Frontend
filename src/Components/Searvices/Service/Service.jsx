@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 const Service = ({ service }) => {
   const {
@@ -18,13 +20,18 @@ const Service = ({ service }) => {
   return (
     <>
       <div className="card m-4 bg-base-100 shadow-xl">
-        <figure>
-          <img
-            src={img}
-            alt={service_name}
-            style={{ width: "100%", height: "20rem", objectFit: "cover" }}
-          />
-        </figure>
+        <PhotoProvider>
+          <PhotoView src={img}>
+            <figure>
+              <img
+                src={img}
+                alt={service_name}
+                className="rounded-lg mx-auto"
+                style={{ height: "100%", width: "20rem", objectFit: "cover" }}
+              />
+            </figure>
+          </PhotoView>
+        </PhotoProvider>
         <div className="card-body">
           <h2 className="card-title">{service_name}</h2>
           <p>{service_description.slice(0, 100)} ......</p>
@@ -68,7 +75,10 @@ const Service = ({ service }) => {
             </div>
           </div>
           <div className="card-actions items-center gap-4 justify-end">
-            <Link to={`/order/${_id}`} className="btn btn-warning btn-outline btn-sm">
+            <Link
+              to={`/order/${_id}`}
+              className="btn btn-warning btn-outline btn-sm"
+            >
               Order Now
             </Link>
             <div className="badge badge-outline">{service_category}</div>
