@@ -3,7 +3,16 @@ import { FaRegEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const MyRevewsDetails = ({ revews }) => {
-  const { name, email, img, revew, rating, services, serviceName } = revews;
+  const {
+    _id,
+    name,
+    email,
+    img,
+    revew,
+    rating,
+    services,
+    serviceName,
+  } = revews;
   const [revewService, setRevewsService] = useState({});
 
   useEffect(() => {
@@ -82,7 +91,7 @@ const MyRevewsDetails = ({ revews }) => {
                 <FaTrashAlt className="mr-3 text-2xl"></FaTrashAlt> Delete
               </button>
             </Link>
-            <Link>
+            <Link to={`/editerevews/${_id}`}>
               <button className="btn">
                 <FaRegEdit className="mr-3 text-2xl"></FaRegEdit> Edit
               </button>

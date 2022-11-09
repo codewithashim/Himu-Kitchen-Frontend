@@ -20,7 +20,7 @@ const MyRevews = () => {
 
   return (
     <>
-      <section>
+      <section >
         <div>
           <h1 className="text-2xl font-bold text-center my-4">My Revews</h1>
         </div>

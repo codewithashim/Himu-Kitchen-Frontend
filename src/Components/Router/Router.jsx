@@ -12,6 +12,7 @@ import Order from "../Order/Order";
 import AddServices from "../AddServices/AddServices";
 import MyRevews from "../MyRevews/MyRevews";
 import Profile from "../Profile/Profile";
+import EditMyRevews from "../MyRevews/EditMyRevews/EditMyRevews";
 
 const route = createBrowserRouter([
   {
@@ -64,6 +65,13 @@ const route = createBrowserRouter([
       {
         path: "/myrevews",
         element: <MyRevews></MyRevews>,
+      },
+      {
+        path: "editerevews/:id",
+        loader: ({ params }) => {
+          return fetch(`http://localhost:5000/reviews/${params.id}`);
+        },
+        element: <EditMyRevews></EditMyRevews>,
       },
       {
         path: "/profile",
