@@ -97,12 +97,11 @@ const ServicesDetails = () => {
               <h2 className="text-2xl text-center font-bold text-yellow-400">
                 Give Your Valuabele Revews
               </h2>
-
               <div>
                 <Revews></Revews>
               </div>
             </div>
-            <div className="divider"></div>
+            {/* <div className="divider"></div> */}
             <div className="flex gap-4 justify-center items-center"></div>
             <div className="divider"></div>
             <div className="flex items-center gap-2">

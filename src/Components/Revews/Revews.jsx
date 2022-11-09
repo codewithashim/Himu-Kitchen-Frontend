@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/UserContext";
+import RevewsDetails from "./RevewsDetails/RevewsDetails";
 
 const Revews = () => {
   const { user, logout } = useContext(AuthContext);
@@ -28,6 +29,14 @@ const Revews = () => {
         }
       });
   };
+
+  useEffect(() => {
+    fetch("http://localhost:5000/reviews")
+      .then((res) => res.json())
+      .then((data) => setRevews(data));
+  }, []);
+  const allRevews = revews.data;
+  console.log(allRevews);
 
   return (
     <>
@@ -60,6 +69,19 @@ const Revews = () => {
               <input type="submit" className="btn btn-warning" value="Submit" />
             </div>
           </form>
+        </div>
+        <div className="divider"></div>
+        <div>
+          <h2 className="text-2xl text-center font-bold text-yellow-400">
+            See All Revews
+          </h2>
+          <div>
+            {allRevews?.map((revew) => {
+              return(
+                <RevewsDetails revew={revew}></RevewsDetails>
+              )
+            })}
+          </div>
         </div>
       </section>
     </>
