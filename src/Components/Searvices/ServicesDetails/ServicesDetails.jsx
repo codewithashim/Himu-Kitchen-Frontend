@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
@@ -6,10 +6,12 @@ import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Context/UserContext";
 import Revews from "../../Revews/Revews";
 import Loaders from "../../../Assets/loader.gif";
+import RevewsDetails from "../../Revews/RevewsDetails/RevewsDetails";
 
 const ServicesDetails = () => {
   const services = useLoaderData();
   const { user, loading } = useContext(AuthContext);
+  const [revews, setRevews] = useState([]);
 
   const {
     _id,
@@ -24,6 +26,15 @@ const ServicesDetails = () => {
     service_provider_img,
   } = services.data;
   const servicesId = _id;
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/reviews?services=${servicesId}`)
+      .then((res) => res.json())
+      .then((data) => setRevews(data));
+  }, [servicesId]);
+
+  const allRevews = revews.data;
+  console.log(allRevews);
 
   if (loading) {
     return (
@@ -149,6 +160,19 @@ const ServicesDetails = () => {
                     </div>
                   </>
                 )}
+              </div>
+              <div>
+                <div className="divider"></div>
+                <div>
+                  {allRevews?.map((revew) => {
+                    return (
+                      <RevewsDetails
+                        key={revew._id}
+                        revew={revew}
+                      ></RevewsDetails>
+                    );
+                  })}
+                </div>
               </div>
             </div>
             {/* <div className="divider"></div> */}

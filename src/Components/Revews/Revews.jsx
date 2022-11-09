@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/UserContext";
 import RevewsDetails from "./RevewsDetails/RevewsDetails";
 
 const Revews = ({ servicesId }) => {
   const { user } = useContext(AuthContext);
-  const [revews, setRevews] = useState([]);
 
 
   const hendelRevews = (e) => {
@@ -29,7 +28,6 @@ const Revews = ({ servicesId }) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          alert(data.message);
           e.target.reset();
           Swal.fire(
             "Thank For Your Revews!",
@@ -39,15 +37,6 @@ const Revews = ({ servicesId }) => {
         }
       });
   };
-
-  useEffect(() => {
-    fetch(`http://localhost:5000/reviews?services=${servicesId}`)
-      .then((res) => res.json())
-      .then((data) => setRevews(data));
-  }, [servicesId]);
-  
-  const allRevews = revews.data;
-  console.log(allRevews);
 
   return (
     <>
@@ -86,11 +75,7 @@ const Revews = ({ servicesId }) => {
           <h2 className="text-2xl text-center font-bold text-yellow-400">
             See All Revews
           </h2>
-          <div>
-            {allRevews?.map((revew) => {
-              return <RevewsDetails revew={revew}></RevewsDetails>;
-            })}
-          </div>
+
         </div>
       </section>
     </>
