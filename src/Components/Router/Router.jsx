@@ -30,9 +30,7 @@ const route = createBrowserRouter([
       {
         path: "/services/:id",
         loader: ({ params }) => {
-          return fetch(
-            `https://himu-kitchen-server-codewithashim.vercel.app/services/${params.id}`
-          );
+          return fetch(`http://localhost:5000/services/${params.id}`);
         },
         element: <ServicesDetails></ServicesDetails>,
       },

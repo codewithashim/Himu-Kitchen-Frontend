@@ -2,9 +2,11 @@ import React from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { useLoaderData } from "react-router-dom";
+import Revews from "../../Revews/Revews";
 
 const ServicesDetails = () => {
-  const service = useLoaderData();
+  const services  = useLoaderData();
+
   const {
     service_name,
     service_price,
@@ -15,8 +17,8 @@ const ServicesDetails = () => {
     service_status,
     service_provider,
     service_provider_img,
-  } = service.data;
-  console.log(service.data);
+  } = services.data;
+
 
   return (
     <>
@@ -43,10 +45,14 @@ const ServicesDetails = () => {
             <p>{service_description}</p>
 
             <div className="flex gap-4 justify-start">
-              <span className=" bg-primary p-2">Category : {service_category}</span>
-              <span className=" bg-primary p-2">Status : {service_status}</span>
+              <span className=" bg-primary p-2 text-white rounded">
+                Category : {service_category}
+              </span>
+              <span className=" bg-primary p-2 text-white rounded">
+                Status : {service_status}
+              </span>
               <div>
-                <span className="text-[1rem] mx-4 font-bold">
+                <span className="text-[1rem] mx-4 text-center font-bold">
                   Price: ৳ {service_price}
                 </span>
               </div>
@@ -91,8 +97,13 @@ const ServicesDetails = () => {
               <h2 className="text-2xl text-center font-bold text-yellow-400">
                 Give Your Valuabele Revews
               </h2>
-              <div></div>
+
+              <div>
+                <Revews></Revews>
+              </div>
             </div>
+            <div className="divider"></div>
+            <div className="flex gap-4 justify-center items-center"></div>
             <div className="divider"></div>
             <div className="flex items-center gap-2">
               <img
