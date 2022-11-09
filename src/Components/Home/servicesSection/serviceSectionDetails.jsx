@@ -27,7 +27,7 @@ const serviceSectionDetails = ({ service }) => {
                 src={img}
                 alt={service_name}
                 className="rounded-lg mx-auto"
-                style={{ height: "100%", width: "20rem", objectFit: "cover" }}
+                style={{ height: "15rem", width: "100%", objectFit: "cover" }}
               />
             </figure>
           </PhotoView>

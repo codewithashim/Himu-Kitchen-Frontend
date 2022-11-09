@@ -27,7 +27,7 @@ const Service = ({ service }) => {
                 src={img}
                 alt={service_name}
                 className="rounded-lg mx-auto"
-                style={{ height: "100%", width: "20rem", objectFit: "cover" }}
+                style={{ height: "20rem", width: "100%", objectFit: "cover" }}
               />
             </figure>
           </PhotoView>
@@ -104,7 +104,6 @@ const Service = ({ service }) => {
           </div>
         </div>
       </div>
-      
     </>
   );
 };
