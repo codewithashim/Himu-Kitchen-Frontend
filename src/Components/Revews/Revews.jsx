@@ -7,9 +7,9 @@ const Revews = ({ servicesId }) => {
   const { user } = useContext(AuthContext);
   const [revews, setRevews] = useState([]);
 
+
   const hendelRevews = (e) => {
     e.preventDefault();
-
     const revew = {
       services: servicesId,
       name: user?.displayName,
@@ -41,10 +41,11 @@ const Revews = ({ servicesId }) => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch(`http://localhost:5000/reviews?services=${servicesId}`)
       .then((res) => res.json())
       .then((data) => setRevews(data));
-  }, []);
+  }, [servicesId]);
+  
   const allRevews = revews.data;
   console.log(allRevews);
 
