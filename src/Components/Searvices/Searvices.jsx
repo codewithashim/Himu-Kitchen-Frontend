@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaUtensils } from "react-icons/fa";
-
+import { AuthContext } from "../../Context/UserContext";
 import useTitle from "../../Hooks/useTitle";
 import Service from "./Service/Service";
+import Loaders from "../../Assets/loader.gif";
 
 const Searvices = () => {
+  useTitle("Services");
   // const { services, count } = useLoaderData();
-
   const [count, setCount] = useState(0);
   const [services, setServices] = useState([]);
   const [page, setPage] = useState(0);
   const [perPage, setPerPage] = useState(6);
-
   const pages = Math.ceil(count / perPage);
 
   useEffect(() => {
@@ -23,9 +23,16 @@ const Searvices = () => {
       });
   }, [page, perPage]);
 
-  console.log(services);
+  const { loading } = useContext(AuthContext);
 
-  useTitle("Services");
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center my-20">
+        <img src={Loaders} style={{width:"50%"}} alt="loader....." />
+      </div>
+    );
+  }
+
   return (
     <>
       <section className="p-4">

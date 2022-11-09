@@ -1,13 +1,17 @@
 import React from "react";
+import { useContext } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../../Context/UserContext";
 import Revews from "../../Revews/Revews";
+import Loaders from "../../../Assets/loader.gif";
 
 const ServicesDetails = () => {
-  const services  = useLoaderData();
+  const services = useLoaderData();
 
   const {
+    _id,
     service_name,
     service_price,
     service_description,
@@ -18,7 +22,17 @@ const ServicesDetails = () => {
     service_provider,
     service_provider_img,
   } = services.data;
+  const servicesId = _id;
 
+  const { loading } = useContext(AuthContext);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center my-20">
+        <img src={Loaders} style={{ width: "50%" }} alt="loader....." />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -97,8 +111,9 @@ const ServicesDetails = () => {
               <h2 className="text-2xl text-center font-bold text-yellow-400">
                 Give Your Valuabele Revews
               </h2>
+              {/* =========== revews =========== */}
               <div>
-                <Revews></Revews>
+                <Revews servicesId={servicesId}></Revews>
               </div>
             </div>
             {/* <div className="divider"></div> */}

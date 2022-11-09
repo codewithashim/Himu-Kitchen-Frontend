@@ -5,7 +5,7 @@ import logo from "../../Assets/himu-kitechen.png";
 const Footer = () => {
   return (
     <>
-      <footer className="footer p-10 bg-base-200 text-base-content">
+      <footer className="footer p-6 mt-4 bg-base-200 text-base-content">
         <div>
           <img src={logo} alt="Himu Kitchen" style={{ width: "5rem" }} />
           <p>
@@ -30,9 +30,9 @@ const Footer = () => {
         </div>
         <div>
           <span className="footer-title">Legal</span>
-          <a className="link link-hover">Terms of use</a>
-          <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
+          <Link className="link link-hover">Terms of use</Link>
+          <Link className="link link-hover">Privacy policy</Link>
+          <Link className="link link-hover">Cookie policy</Link>
         </div>
       </footer>
     </>

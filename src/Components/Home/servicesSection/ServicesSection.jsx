@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useEffect } from "react";
 import { FaUtensils } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Context/UserContext";
 import ServiceSectionDetails from "./serviceSectionDetails";
+import Loaders from "../../../Assets/loader.gif";
 
 const ServicesSection = () => {
   const [services, setServices] = useState([]);
@@ -14,6 +16,15 @@ const ServicesSection = () => {
         .then((data) => setServices(data.data));
     };
   }, []);
+  const { loading } = useContext(AuthContext);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center my-20">
+        <img src={Loaders} style={{ width: "50%" }} alt="loader....." />
+      </div>
+    );
+  }
   return (
     <>
       <section>
