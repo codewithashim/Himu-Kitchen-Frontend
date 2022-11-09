@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaRegEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const MyRevewsDetails = ({ revews }) => {
+const MyRevewsDetails = ({ revews, hendelDelete }) => {
   const {
     _id,
     name,
@@ -20,6 +20,7 @@ const MyRevewsDetails = ({ revews }) => {
       .then((res) => res.json())
       .then((data) => setRevewsService(data.data));
   }, [services]);
+
 
   return (
     <>
@@ -86,7 +87,7 @@ const MyRevewsDetails = ({ revews }) => {
             </div>
           </div>
           <div className="card-actions justify-end">
-            <Link>
+            <Link onClick={() => hendelDelete(_id)}>
               <button className="btn btn-warning">
                 <FaTrashAlt className="mr-3 text-2xl"></FaTrashAlt> Delete
               </button>

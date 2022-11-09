@@ -13,6 +13,7 @@ import AddServices from "../AddServices/AddServices";
 import MyRevews from "../MyRevews/MyRevews";
 import Profile from "../Profile/Profile";
 import EditMyRevews from "../MyRevews/EditMyRevews/EditMyRevews";
+import PrivetRoute from "./PrivetRoute";
 
 const route = createBrowserRouter([
   {
@@ -40,7 +41,11 @@ const route = createBrowserRouter([
       },
       {
         path: "/order/:id",
-        element: <Order></Order>,
+        element: (
+          <PrivetRoute>
+            <Order></Order>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/blogs",
@@ -60,22 +65,38 @@ const route = createBrowserRouter([
       },
       {
         path: "/addservices",
-        element: <AddServices></AddServices>,
+        element: (
+          <PrivetRoute>
+            <AddServices></AddServices>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/myrevews",
-        element: <MyRevews></MyRevews>,
+        element: (
+          <PrivetRoute>
+            <MyRevews></MyRevews>
+          </PrivetRoute>
+        ),
       },
       {
         path: "editerevews/:id",
         loader: ({ params }) => {
           return fetch(`http://localhost:5000/reviews/${params.id}`);
         },
-        element: <EditMyRevews></EditMyRevews>,
+        element: (
+          <PrivetRoute>
+            <EditMyRevews></EditMyRevews>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/profile",
-        element: <Profile></Profile>,
+        element: (
+          <PrivetRoute>
+            <Profile></Profile>
+          </PrivetRoute>
+        ),
       },
       {
         path: "*",
