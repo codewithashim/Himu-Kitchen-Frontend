@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 import { FaUtensils } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import ServiceSectionDetails from "./serviceSectionDetails";
 
-import useTitle from "../../Hooks/useTitle";
-import Service from "./Service/Service";
-
-const Searvices = () => {
+const ServicesSection = () => {
   const [services, setServices] = useState([]);
+
   useEffect(() => {
     return () => {
-      fetch("http://localhost:5000/services")
+      fetch("http://localhost:5000/servicelimit")
         .then((res) => res.json())
         .then((data) => setServices(data.data));
     };
   }, []);
-
-  useTitle("Services");
   return (
     <>
-      <section className="p-4">
+      <section>
         <div className="servicesTitle">
           <h1
             className="text-center py-2 text-3xl font-bold text-yellow-400"
@@ -31,15 +30,23 @@ const Searvices = () => {
           </h1>
         </div>
         <div className="servicesContainer grid md:grid-cols-3 py-4">
-          {services.map((service) => {
-            return <Service key={service._id} service={service}></Service>;
+          {services.slice(0, 3).map((service) => {
+            return (
+              <ServiceSectionDetails
+                key={service._id}
+                service={service}
+              ></ServiceSectionDetails>
+            );
           })}
         </div>
         <div className="flex justify-center items-center">
+          <Link className="btn btn-warning btn-outline" to="/services">
+            See More
+          </Link>
         </div>
       </section>
     </>
   );
 };
 
-export default Searvices;
+export default ServicesSection;

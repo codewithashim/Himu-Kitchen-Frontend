@@ -1,7 +1,8 @@
 import React from "react";
 import useTitle from "../../Hooks/useTitle";
-import Searvices from "../Searvices/Searvices";
+
 import Hero from "./Hero/Hero";
+import ServicesSection from "./servicesSection/ServicesSection";
 
 const Home = () => {
   useTitle("Home");
@@ -9,7 +10,7 @@ const Home = () => {
     <>
       <section>
         <Hero></Hero>
-        <Searvices></Searvices>
+        <ServicesSection></ServicesSection>
       </section>
     </>
   );
