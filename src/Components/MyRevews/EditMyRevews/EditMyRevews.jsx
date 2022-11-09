@@ -111,6 +111,9 @@ const EditMyRevews = () => {
             <div className="divider"></div>
             <div>
               <h2 className="my-2">
+                <span className="font-bold text-yellow-400"></span> : {revew}
+              </h2>
+              <h2 className="my-2">
                 <span className="font-bold text-yellow-400"></span> : {revews}
               </h2>
               <h2 className="my-2">

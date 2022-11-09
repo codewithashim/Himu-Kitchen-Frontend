@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { useContext } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
@@ -26,12 +26,14 @@ const ServicesDetails = () => {
     service_provider_img,
   } = services?.data;
   const servicesId = _id;
+  const [forceRender, forceUpdate] = useReducer((x) => x + 1, 0);
 
   useEffect(() => {
     fetch(`http://localhost:5000/reviews?services=${servicesId}`)
       .then((res) => res.json())
       .then((data) => setRevews(data));
-  }, [servicesId]);
+    forceUpdate();
+  }, [servicesId,forceRender]);
 
   const allRevews = revews.data;
 
@@ -124,7 +126,10 @@ const ServicesDetails = () => {
               <div>
                 {user?.uid ? (
                   <>
-                    <Revews servicesId={servicesId} service_name={service_name}></Revews>
+                    <Revews
+                      servicesId={servicesId}
+                      service_name={service_name}
+                    ></Revews>
                   </>
                 ) : (
                   <>
