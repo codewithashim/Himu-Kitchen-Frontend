@@ -61,7 +61,7 @@ const ServicesDetails = () => {
             </PhotoView>
           </PhotoProvider>
         </div>
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card w-full bg-base-100 shadow-xl">
           <div className="card-body ">
             <h2 className="card-title text-yellow-400 font-bold text-3xl">
               {service_name}

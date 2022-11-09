@@ -9,6 +9,9 @@ import Register from "../../Auth/Register/Register";
 import Recipes from "../Recipes/Recipes";
 import ServicesDetails from "../Searvices/ServicesDetails/ServicesDetails";
 import Order from "../Order/Order";
+import AddServices from "../AddServices/AddServices";
+import MyRevews from "../MyRevews/MyRevews";
+import Profile from "../Profile/Profile";
 
 const route = createBrowserRouter([
   {
@@ -56,11 +59,15 @@ const route = createBrowserRouter([
       },
       {
         path: "/addServices",
-        element: <></>,
+        element: <AddServices></AddServices>,
       },
       {
         path: "/myRevews",
-        element: <></>,
+        element: <MyRevews></MyRevews>,
+      },
+      {
+        path: "/profile",
+        element: <Profile></Profile>,
       },
       {
         path: "*",

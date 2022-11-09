@@ -2,7 +2,7 @@ import React from "react";
 
 const RevewsDetails = ({ revew }) => {
   return (
-    <div className="card border shadow-xl w-2/3 m-4 mx-auto p-6">
+    <div className=" shadow-xl  m-4 mx-auto p-6">
       <div className="flex gap-4 m-4 items-center">
         <div className="flex flex-col gap-2">
           <span className="text-[1rem] font-bold">rating: {revew.revew}</span>
@@ -10,7 +10,7 @@ const RevewsDetails = ({ revew }) => {
         </div>
       </div>
 
-      <div className="flex gap-2 items-center">
+      <div className="">
         <img
           src={revew.img}
           alt={revew.name}
