@@ -58,11 +58,11 @@ const route = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: "/addServices",
+        path: "/addservices",
         element: <AddServices></AddServices>,
       },
       {
-        path: "/myRevews",
+        path: "/myrevews",
         element: <MyRevews></MyRevews>,
       },
       {

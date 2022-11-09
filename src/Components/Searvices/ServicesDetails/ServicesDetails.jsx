@@ -24,7 +24,7 @@ const ServicesDetails = () => {
     service_status,
     service_provider,
     service_provider_img,
-  } = services.data;
+  } = services?.data;
   const servicesId = _id;
 
   useEffect(() => {
@@ -34,7 +34,6 @@ const ServicesDetails = () => {
   }, [servicesId]);
 
   const allRevews = revews.data;
-  console.log(allRevews);
 
   if (loading) {
     return (
@@ -118,14 +117,14 @@ const ServicesDetails = () => {
 
             <div className="divider"></div>
             <div>
-              <h2 className="text-2xl text-center font-bold text-yellow-400">
+              <h2 className="text-2xl my-2 text-center font-bold text-yellow-400">
                 Give Your Valuabele Revews
               </h2>
               {/* =========== revews =========== */}
               <div>
                 {user?.uid ? (
                   <>
-                    <Revews servicesId={servicesId}></Revews>
+                    <Revews servicesId={servicesId} service_name={service_name}></Revews>
                   </>
                 ) : (
                   <>

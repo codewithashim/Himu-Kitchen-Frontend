@@ -94,12 +94,12 @@ const Header = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link>
+                      <Link to="myrevews">
                         <FaMedapps></FaMedapps> My Review
                       </Link>
                     </li>
                     <li>
-                      <Link>
+                      <Link to="addservices">
                         <FaCheckSquare></FaCheckSquare> Add Services
                       </Link>
                     </li>

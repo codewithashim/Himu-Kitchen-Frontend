@@ -1,11 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/UserContext";
-import RevewsDetails from "./RevewsDetails/RevewsDetails";
 
-const Revews = ({ servicesId }) => {
+const Revews = ({ servicesId,service_name }) => {
   const { user } = useContext(AuthContext);
-
 
   const hendelRevews = (e) => {
     e.preventDefault();
@@ -13,6 +11,7 @@ const Revews = ({ servicesId }) => {
       services: servicesId,
       name: user?.displayName,
       email: user?.email,
+      serviceName: service_name,
       img: user?.photoURL,
       revew: e.target.revews.value,
       rating: e.target.rating.value,
@@ -75,7 +74,6 @@ const Revews = ({ servicesId }) => {
           <h2 className="text-2xl text-center font-bold text-yellow-400">
             See All Revews
           </h2>
-
         </div>
       </section>
     </>

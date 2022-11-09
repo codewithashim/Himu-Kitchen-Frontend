@@ -6,7 +6,7 @@ const Profile = () => {
   return (
     <>
       <section>
-        <div className="card border shadow-xl w-2/4 p-4 mx-auto">
+        <div className="card border shadow-xl my-4 w-2/4 p-4 mx-auto">
           <h1>{user?.displayName}</h1>
           <h1>{user?.email}</h1>
           <img
