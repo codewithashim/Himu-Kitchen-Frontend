@@ -104,6 +104,7 @@ const Service = ({ service }) => {
           </div>
         </div>
       </div>
+      
     </>
   );
 };

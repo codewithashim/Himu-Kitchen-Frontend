@@ -1,18 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { FaUtensils } from "react-icons/fa";
+import { useLoaderData } from "react-router-dom";
 
 import useTitle from "../../Hooks/useTitle";
 import Service from "./Service/Service";
 
 const Searvices = () => {
+  // const { services, count } = useLoaderData();
+
+  const [count, setCount] = useState(0);
   const [services, setServices] = useState([]);
+  const [page, setPage] = useState(0);
+  const [perPage, setPerPage] = useState(6);
+
+  const pages = Math.ceil(count / perPage);
+
   useEffect(() => {
-    return () => {
-      fetch("http://localhost:5000/services")
-        .then((res) => res.json())
-        .then((data) => setServices(data.data));
-    };
-  }, []);
+    fetch(`http://localhost:5000/services?page=${page}&perPage=${perPage}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setServices(data.services);
+        setCount(data.count);
+      });
+  }, [page, perPage]);
+
+  console.log(services);
 
   useTitle("Services");
   return (
@@ -35,7 +47,31 @@ const Searvices = () => {
             return <Service key={service._id} service={service}></Service>;
           })}
         </div>
-        <div className="flex justify-center items-center">
+
+        <div className="pagination flex justify-center items-center">
+          {/* <p>curnetly selectd page {page}</p> */}
+          {[...Array(pages).keys()].map((number) => {
+            return (
+              <button
+                key={number}
+                className={page === number && "bg-yellow-400 btn m-4"}
+                onClick={() => setPage(number)}
+              >
+                {number + 1}
+              </button>
+            );
+          })}
+          <select
+            className="mx-4"
+            onChange={(event) => setPerPage(event.target.value)}
+          >
+            <option value="5" selected>
+              5
+            </option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
         </div>
       </section>
     </>
