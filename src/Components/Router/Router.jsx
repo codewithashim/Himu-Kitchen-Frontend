@@ -55,6 +55,14 @@ const route = createBrowserRouter([
         element: <Register></Register>,
       },
       {
+        path: "/addServices",
+        element: <></>,
+      },
+      {
+        path: "/myRevews",
+        element: <></>,
+      },
+      {
         path: "*",
         element: <NotFound></NotFound>,
       },

@@ -1,20 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/UserContext";
 import RevewsDetails from "./RevewsDetails/RevewsDetails";
 
-const Revews = () => {
+const Revews = ({ servicesId }) => {
   const { user } = useContext(AuthContext);
   const [revews, setRevews] = useState([]);
 
   const hendelRevews = (e) => {
     e.preventDefault();
+
     const revew = {
-      name: user.displayName,
-      email: user.email,
-      img: user.photoURL,
+      services: servicesId,
+      name: user?.displayName,
+      email: user?.email,
+      img: user?.photoURL,
       revew: e.target.revews.value,
       rating: e.target.rating.value,
     };
+
     fetch("http://localhost:5000/reviews", {
       method: "POST",
       headers: {
@@ -25,7 +29,13 @@ const Revews = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          alert("Thanks for your revew");
+          alert(data.message);
+          e.target.reset();
+          Swal.fire(
+            "Thank For Your Revews!",
+            "You clicked the button!",
+            "success"
+          );
         }
       });
   };

@@ -2,13 +2,14 @@ import React from "react";
 import { useContext } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Context/UserContext";
 import Revews from "../../Revews/Revews";
 import Loaders from "../../../Assets/loader.gif";
 
 const ServicesDetails = () => {
   const services = useLoaderData();
+  const { user, loading } = useContext(AuthContext);
 
   const {
     _id,
@@ -23,8 +24,6 @@ const ServicesDetails = () => {
     service_provider_img,
   } = services.data;
   const servicesId = _id;
-
-  const { loading } = useContext(AuthContext);
 
   if (loading) {
     return (
@@ -113,7 +112,43 @@ const ServicesDetails = () => {
               </h2>
               {/* =========== revews =========== */}
               <div>
-                <Revews servicesId={servicesId}></Revews>
+                {user?.uid ? (
+                  <>
+                    <Revews servicesId={servicesId}></Revews>
+                  </>
+                ) : (
+                  <>
+                    <div>
+                      <div className="alert alert-warning shadow-lg">
+                        <div className="m-2 p3">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="stroke-current flex-shrink-0 h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                            />
+                          </svg>
+                          <span className="text-center">
+                            {" "}
+                            Pless Login Frist Then You Can Provider Your
+                            Valuable Revews
+                          </span>
+                        </div>
+                      </div>
+                      <div className="mt-4 text-center">
+                        <Link to="/login" className="btn btn-warning">
+                          Login Now
+                        </Link>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
             {/* <div className="divider"></div> */}
