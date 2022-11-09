@@ -28,7 +28,7 @@ const Searvices = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center my-20">
-        <img src={Loaders} style={{width:"50%"}} alt="loader....." />
+        <img src={Loaders} style={{ width: "50%" }} alt="loader....." />
       </div>
     );
   }
@@ -47,6 +47,9 @@ const Searvices = () => {
             Services
             <FaUtensils className="text-yellow-400"></FaUtensils>
           </h1>
+        </div>
+        <div>
+          My Total Services : <span className="text-yellow-400">{count}</span>
         </div>
         <div className="servicesContainer grid md:grid-cols-3 py-4">
           {services.map((service) => {

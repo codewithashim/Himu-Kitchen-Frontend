@@ -88,7 +88,7 @@ const Service = ({ service }) => {
           </div>
         </div>
         <div className="card-footer bg-slate-600 p-3 flex justify-center items-center gap-4">
-          <div className="profile flex justify-center items-center gap-2">
+          <div className="profile flex flex-col justify-center items-center gap-2">
             <img
               src={service_provider_img}
               alt={service_provider}
