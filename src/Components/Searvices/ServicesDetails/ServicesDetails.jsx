@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { useContext } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
@@ -13,6 +13,7 @@ const ServicesDetails = () => {
   const { user } = useContext(AuthContext);
   const [revews, setRevews] = useState([]);
   // const [loader, setLoader] = useState(false);
+  const [forceRender, forceUpdate] = useReducer((x) => x + 1, 0);
   const {
     _id,
     service_name,
@@ -28,13 +29,14 @@ const ServicesDetails = () => {
   const servicesId = _id;
 
   useEffect(() => {
-    fetch(`https://himu-kitchen-server.vercel.app/reviews?services=${servicesId}`)
+    fetch(`https://himu-kitchen-server.vercel.app/reviews?services=${_id}`)
       .then((res) => res.json())
       .then((data) => {
         const revews = data;
         setRevews(revews);
+        forceUpdate();
       });
-  }, [servicesId]);
+  }, [_id, forceRender]);
 
   const allRevews = revews.data;
 
