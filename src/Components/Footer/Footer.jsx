@@ -5,7 +5,7 @@ import logo from "../../Assets/himu-kitechen.png";
 const Footer = () => {
   return (
     <>
-      <footer className="footer p-6 mt-4 bg-base-200 text-base-content">
+      <footer className="footer p-6 bg-base-200 text-base-content">
         <div>
           <img src={logo} alt="Himu Kitchen" style={{ width: "5rem" }} />
           <p>

@@ -10,11 +10,11 @@ const Hero = () => {
       <section className="hero-Section">
         <div className="w-full">
           <div className="p-6 py-8 absolute top-24">
-            <h1 className="text-6xl font-bold text-white">
+            <h1 className="text-4xl md:text-5xl font-bold text-white">
               <span className="text-4xl mb-4"> Hey Wellcome to </span>
               <br />
               <span className="flex">
-                <span className="text-yellow-400 mx4 my4">Himu</span> Kitchen
+                <span className="text-yellow-400 ">Himu</span> Kitchen
                 <span className="text-yellow-400">
                   <FaUtensils></FaUtensils>
                 </span>
