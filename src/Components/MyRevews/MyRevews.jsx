@@ -11,11 +11,14 @@ const MyRevews = () => {
   const [myrevews, setMyRevews] = useState([]);
 
   useEffect(() => {
-    fetch(`https://himu-kitchen-server.vercel.app/myreviews?email=${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
+    fetch(
+      `https://himu-kitchen-server.vercel.app/myreviews?email=${user?.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           logout();
@@ -23,17 +26,18 @@ const MyRevews = () => {
         }
         return res.json();
       })
-      .then((data) => setMyRevews(data));
-    forceUpdate();
+      .then((data) => {
+        setMyRevews(data);
+        forceUpdate();
+      });
   }, [user?.email, logout, forceRender]);
-  
+
   const allMyRevews = myrevews.data;
 
   const hendelDelete = (_id) => {
     const procide = window.confirm(
       "Are you sure you want to delete this order?"
     );
-
     if (procide) {
       fetch(`https://himu-kitchen-server.vercel.app/reviews/${_id}`, {
         method: "DELETE",

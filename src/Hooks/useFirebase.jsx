@@ -15,8 +15,6 @@ const UseFirebase = () => {
     createUser,
   } = useContext(AuthContext);
 
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
 
   // =================== google login  ====================
@@ -122,6 +120,9 @@ const UseFirebase = () => {
 
   // ==================== Email Sign In ===================
 
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const handelEmailSignIn = (event) => {
     event.preventDefault();
     console.log("Email Sign In");
@@ -148,7 +149,7 @@ const UseFirebase = () => {
             localStorage.setItem("token", data.token);
             navigate(from, { replace: true });
           });
-
+        // navigate(from, { replace: true });
         form.reset();
         Swal.fire("Succesfully Sign In!", "You clicked the button!", "success");
       })

@@ -21,7 +21,6 @@ const MyRevewsDetails = ({ revews, hendelDelete }) => {
       .then((data) => setRevewsService(data.data));
   }, [services]);
 
-
   return (
     <>
       <div className="card glass">

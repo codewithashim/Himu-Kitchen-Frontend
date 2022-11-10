@@ -38,14 +38,6 @@ const EditMyRevews = () => {
       });
   };
 
-  // const hendeleInputChanges = (e) => {
-  //   const filde = e.target.name;
-  //   const value = e.target.value;
-  //   const newRevews = { ...newRating };
-  //   newRevews[filde] = value;
-  //   setNewRating(newRevews);
-  // };
-
   return (
     <>
       <section className="p-4 ">

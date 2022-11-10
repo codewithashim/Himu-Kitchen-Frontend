@@ -3,8 +3,6 @@ import { FaUtensils } from "react-icons/fa";
 // import { AuthContext } from "../../Context/UserContext";
 import useTitle from "../../Hooks/useTitle";
 import Service from "./Service/Service";
-// import Loaders from "../../Assets/loader.gif";
-// import Spinner from "../Spinner/Spinner";
 
 const Searvices = () => {
   useTitle("Services");
@@ -14,25 +12,17 @@ const Searvices = () => {
   const [page, setPage] = useState(0);
   const [perPage, setPerPage] = useState(6);
   const pages = Math.ceil(count / perPage);
-  // const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch(`https://himu-kitchen-server.vercel.app/services?page=${page}&perPage=${perPage}`)
+    fetch(
+      `https://himu-kitchen-server.vercel.app/services?page=${page}&perPage=${perPage}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setServices(data.services);
         setCount(data.count);
       });
   }, [page, perPage]);
-
-  // const { loading } = useContext(AuthContext);
-  // if (loading) {
-  //   return (
-  //     <div className="flex justify-center items-center my-20">
-  //       <img src={Loaders} style={{ width: "50%" }} alt="loader....." />
-  //     </div>
-  //   );
-  // }
 
   return (
     <>

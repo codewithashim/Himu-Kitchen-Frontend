@@ -12,7 +12,7 @@ const ServicesDetails = () => {
   const services = useLoaderData();
   const { user } = useContext(AuthContext);
   const [revews, setRevews] = useState([]);
-
+  // const [loader, setLoader] = useState(false);
   const {
     _id,
     service_name,
@@ -30,18 +30,13 @@ const ServicesDetails = () => {
   useEffect(() => {
     fetch(`https://himu-kitchen-server.vercel.app/reviews?services=${servicesId}`)
       .then((res) => res.json())
-      .then((data) => setRevews(data));
+      .then((data) => {
+        const revews = data;
+        setRevews(revews);
+      });
   }, [servicesId]);
 
   const allRevews = revews.data;
-
-  // if (loading) {
-  //   return (
-  //     <div className="flex justify-center items-center my-20">
-  //       <img src={Loaders} style={{ width: "50%" }} alt="loader....." />
-  //     </div>
-  //   );
-  // }
 
   return (
     <>
