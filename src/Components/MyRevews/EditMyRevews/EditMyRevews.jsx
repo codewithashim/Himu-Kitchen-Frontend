@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import React from "react";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useTitle from "../../../Hooks/useTitle";
 
@@ -7,15 +7,22 @@ const EditMyRevews = () => {
   useTitle("Edite Revews");
   const upateRevews = useLoaderData();
   const { rating, revew } = upateRevews.data;
-  const [newRating, setNewRating] = useState({});
+  // const [newRating, setNewRating] = useState({});
   const { revews, serviceName } = upateRevews.data;
+  const navigate = useNavigate();
 
   const handleUpdate = (e) => {
     e.preventDefault();
+
+    const Revews = {
+      rating: e.target.rating.value,
+      revew: e.target.revews.value,
+    };
+
     fetch(`http://localhost:5000/reviews/${upateRevews?.data?._id}`, {
-      method: "PUT",
+      method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newRating),
+      body: JSON.stringify(Revews),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -26,17 +33,18 @@ const EditMyRevews = () => {
             "success"
           );
           console.log(data);
-          setNewRating(data);
+          navigate("/myrevews");
         }
       });
   };
-  const hendeleInputChanges = (e) => {
-    const filde = e.target.name;
-    const value = e.target.value;
-    const newRevews = { ...newRating };
-    newRevews[filde] = value;
-    setNewRating(newRevews);
-  };
+
+  // const hendeleInputChanges = (e) => {
+  //   const filde = e.target.name;
+  //   const value = e.target.value;
+  //   const newRevews = { ...newRating };
+  //   newRevews[filde] = value;
+  //   setNewRating(newRevews);
+  // };
 
   return (
     <>
@@ -123,13 +131,14 @@ const EditMyRevews = () => {
             </div>
           </div>
         </div>
+
         <div>
           <form className="w-full max-w-lg mx-auto" onSubmit={handleUpdate}>
             <div className="retingRevews">
               <select
                 className="select select-warning w-full"
                 defaultValue={rating}
-                onChange={hendeleInputChanges}
+                // onChange={hendeleInputChanges}
                 name="rating"
               >
                 <option disabled selected>
@@ -147,7 +156,7 @@ const EditMyRevews = () => {
                 className="textarea textarea-warning w-full "
                 placeholder="Write Your Revews"
                 name="revews"
-                onChange={hendeleInputChanges}
+                // onChange={hendeleInputChanges}
                 defaultValue={revew}
               ></textarea>
             </div>

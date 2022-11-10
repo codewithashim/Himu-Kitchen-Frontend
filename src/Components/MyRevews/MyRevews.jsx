@@ -26,6 +26,7 @@ const MyRevews = () => {
       .then((data) => setMyRevews(data));
     forceUpdate();
   }, [user?.email, logout, forceRender]);
+  
   const allMyRevews = myrevews.data;
 
   const hendelDelete = (_id) => {

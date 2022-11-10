@@ -77,13 +77,13 @@ const UseFirebase = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    const name = form.fullname.value;
-    const photo = form.photoURL.value;
+    const fullName = form.fullName.value;
+    const photoURL = form.photoURL.value;
     createUser(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
-        handelUpdateUseerDetails(name, photo);
+        hendelUpdateProfile(fullName, photoURL);
         Swal.fire("Succesfully Sign Up!", "You clicked the button!", "success");
         form.reset();
       })
@@ -98,7 +98,7 @@ const UseFirebase = () => {
       });
   };
 
-  const handelUpdateUseerDetails = (name, photoURL) => {
+  const hendelUpdateProfile = (name, photoURL) => {
     const profile = {
       displayName: name,
       photoURL: photoURL,
@@ -106,7 +106,8 @@ const UseFirebase = () => {
     updateUserDetails(profile)
       .then((result) => {
         console.log(result);
-        // Swal.fire("Succesfully Update!", "You clicked the button!", "success");
+        // Profile updated!
+        // ...
       })
       .catch((error) => {
         const errorMessage = error.message;

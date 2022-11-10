@@ -43,6 +43,7 @@ const UserContext = ({ children }) => {
   };
 
   const updateUserDetails = (profile) => {
+    setLoading(true);
     return updateProfile(auth.currentUser, profile);
   };
   // ==================== Sign Out ====================
@@ -64,6 +65,9 @@ const UserContext = ({ children }) => {
   // ==================== Reset Password ====================
 
   // ==================== Update Email ====================
+ //=============================== update ===============================
+
+
   // ==================== Watcher ====================
 
   useEffect(() => {

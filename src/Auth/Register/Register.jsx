@@ -7,8 +7,11 @@ import UseFirebase from "../../Hooks/UseFirebase";
 
 const Register = () => {
   useTitle("Register");
-  const { handelGoogleLogin, handelFacebookLogin, handelEmailSignUp } =
-    UseFirebase();
+  const {
+    handelGoogleLogin,
+    handelFacebookLogin,
+    handelEmailSignUp,
+  } = UseFirebase();
   return (
     <section>
       <div className="hero min-h-screen w-full mx-auto bg-base-200">
@@ -18,7 +21,7 @@ const Register = () => {
           </div>
 
           <div className="md:w-3/4 border rounded p-6 shadow">
-            <form action="" onSubmit={(event) => handelEmailSignUp(event)}>
+            <form action="" onSubmit={handelEmailSignUp}>
               <div>
                 <h2 className="card-title text-center">Sign Up</h2>
               </div>
@@ -29,7 +32,7 @@ const Register = () => {
                 <input
                   type="text"
                   required
-                  name="fullname"
+                  name="fullName"
                   placeholder="Full Name"
                   className="input input-bordered"
                 />

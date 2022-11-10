@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/UserContext";
 
-const Revews = ({ servicesId,service_name }) => {
+const Revews = ({ servicesId, service_name }) => {
   const { user } = useContext(AuthContext);
 
   const hendelRevews = (e) => {
@@ -65,7 +65,11 @@ const Revews = ({ servicesId,service_name }) => {
               ></textarea>
             </div>
             <div className="mt-4">
-              <input type="submit" className="btn btn-warning" value="Submit" />
+              <button
+                type="submit"
+                className="btn btn-warning"
+                value="Submit"
+              />
             </div>
           </form>
         </div>

@@ -1,24 +1,36 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef  } from "react";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/UserContext";
+
 import useTitle from "../../Hooks/useTitle";
 
 const Profile = () => {
   useTitle("Profile");
   const { user } = useContext(AuthContext);
 
-  const [name, setName] = useState(user.displayName);
-  const [photo, setPhotoo] = useRef(user.photoURL);
+  const photoURLRef = useRef(user.photoURL);
+  const nameURLRef = useRef(user.displayName);
+
+  // const [photoURL, setPhotoURL] = useState(user.photoURL);
+  // const [name, setName] = useState(user.displayName);
+
   const hendelSubmit = (e) => {
     e.preventDefault();
-    console.log(name, photo);
+    console.log(photoURLRef.current.value);
+    console.log(nameURLRef.current.value);
+    Swal.fire("Succesfully Update!", "You clicked the button!", "success");
   };
 
-  const hendelNameChange = (e) => {
-    setName(e.target.value);
-  };
-  const hendelPhotoChange = (e) => {
-    setPhotoo(e.target.value);
-  };
+  // const hendeleInputChanges = (e) => {
+  //   const filde = e.target.name;
+  //   const value = e.target.value;
+  //   if (filde === "photoURL") {
+  //     setPhotoURL(value);
+  //   }
+  //   if (filde === "fullName") {
+  //     setName(value);
+  //   }
+  // };
 
   return (
     <>
@@ -27,7 +39,7 @@ const Profile = () => {
           <div className="md:flex gap-4 items-center">
             <img
               src={user?.photoURL}
-              alt=""
+              alt={user?.displayName}
               className="rounded-full"
               style={{ width: "5rem" }}
             />
@@ -38,32 +50,39 @@ const Profile = () => {
           </div>
         </div>
 
-        <div>
-          <form action="">
+        <div className="p-6">
+          <form action="" onSubmit={(e) => hendelSubmit(e)}>
             <div className="w-3/5 mx-auto grid md:grid-cols-2 gap-4">
               <input
                 type="text"
-                placeholder="Service Name"
-                name="name"
+                placeholder="Full Name"
+                ref={nameURLRef}
+                // onChange={(e) => hendeleInputChanges(e)}
+                defaultValue={user?.displayName}
+                name="fullName"
                 className="input input-bordered input-warning w-full max-w-xs"
               />
               <input
                 type="text"
-                placeholder="Service Price"
-                name="price"
+                defaultValue={user.photoURL}
+                ref={photoURLRef}
+                // onChange={(e) => hendeleInputChanges(e)}
+                placeholder="Photo URL"
+                name="photoURL"
                 className="input input-bordered input-warning w-full max-w-xs"
               />
               <input
-                type="text"
-                placeholder="Service Image"
-                name="image"
+                placeholder="Email"
+                readOnly
+                defaultValue={user?.email}
+                type="email"
                 className="input input-bordered input-warning w-full max-w-xs"
               />
               <input
-                type="text"
-                placeholder="Status"
-                name="status"
-                className="input input-bordered input-warning w-full max-w-xs"
+                type="submit"
+                name="submit"
+                value="Update"
+                className="btn btn-warning"
               />
             </div>
           </form>

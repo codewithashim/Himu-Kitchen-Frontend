@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FaUtensils } from "react-icons/fa";
-import { AuthContext } from "../../Context/UserContext";
+// import { AuthContext } from "../../Context/UserContext";
 import useTitle from "../../Hooks/useTitle";
 import Service from "./Service/Service";
-import Loaders from "../../Assets/loader.gif";
+// import Loaders from "../../Assets/loader.gif";
+// import Spinner from "../Spinner/Spinner";
 
 const Searvices = () => {
   useTitle("Services");
@@ -13,6 +14,7 @@ const Searvices = () => {
   const [page, setPage] = useState(0);
   const [perPage, setPerPage] = useState(6);
   const pages = Math.ceil(count / perPage);
+  // const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:5000/services?page=${page}&perPage=${perPage}`)
@@ -23,19 +25,21 @@ const Searvices = () => {
       });
   }, [page, perPage]);
 
-  const { loading } = useContext(AuthContext);
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center my-20">
-        <img src={Loaders} style={{ width: "50%" }} alt="loader....." />
-      </div>
-    );
-  }
+  // const { loading } = useContext(AuthContext);
+  // if (loading) {
+  //   return (
+  //     <div className="flex justify-center items-center my-20">
+  //       <img src={Loaders} style={{ width: "50%" }} alt="loader....." />
+  //     </div>
+  //   );
+  // }
 
   return (
     <>
       <section className="p-4">
+
+
+
         <div className="servicesTitle">
           <h1
             className="text-center py-2 text-3xl font-bold text-yellow-400"
