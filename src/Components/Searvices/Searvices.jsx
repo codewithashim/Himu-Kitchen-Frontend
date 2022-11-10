@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaUtensils } from "react-icons/fa";
 // import { AuthContext } from "../../Context/UserContext";
 import useTitle from "../../Hooks/useTitle";
@@ -37,9 +37,6 @@ const Searvices = () => {
   return (
     <>
       <section className="p-4">
-
-
-
         <div className="servicesTitle">
           <h1
             className="text-center py-2 text-3xl font-bold text-yellow-400"

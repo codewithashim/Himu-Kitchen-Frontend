@@ -1,16 +1,16 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Context/UserContext";
 import Revews from "../../Revews/Revews";
-import Loaders from "../../../Assets/loader.gif";
+// import Loaders from "../../../Assets/loader.gif";
 import RevewsDetails from "../../Revews/RevewsDetails/RevewsDetails";
 
 const ServicesDetails = () => {
   const services = useLoaderData();
-  const { user, loading } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [revews, setRevews] = useState([]);
 
   const {
@@ -26,24 +26,22 @@ const ServicesDetails = () => {
     service_provider_img,
   } = services?.data;
   const servicesId = _id;
-  const [forceRender, forceUpdate] = useReducer((x) => x + 1, 0);
 
   useEffect(() => {
     fetch(`http://localhost:5000/reviews?services=${servicesId}`)
       .then((res) => res.json())
       .then((data) => setRevews(data));
-    forceUpdate();
-  }, [servicesId, forceRender]);
+  }, [servicesId]);
 
   const allRevews = revews.data;
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center my-20">
-        <img src={Loaders} style={{ width: "50%" }} alt="loader....." />
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div className="flex justify-center items-center my-20">
+  //       <img src={Loaders} style={{ width: "50%" }} alt="loader....." />
+  //     </div>
+  //   );
+  // }
 
   return (
     <>
@@ -168,7 +166,33 @@ const ServicesDetails = () => {
               <div>
                 <div className="divider"></div>
                 <div>
-    
+                  <h2 className="text-2xl text-center font-bold text-yellow-400">
+                    See All Revews
+                  </h2>
+                </div>
+
+                {allRevews >= 0 ? (
+                  <>
+                    <h2 className="text-center text-2xl text-red-400 p-4">
+                      No reviews were added
+                    </h2>
+                  </>
+                ) : (
+                  <>
+                    <div>
+                      {allRevews?.map((revew) => {
+                        return (
+                          <RevewsDetails
+                            key={revew._id}
+                            revew={revew}
+                          ></RevewsDetails>
+                        );
+                      })}
+                    </div>
+                  </>
+                )}
+
+                {/* <div>
                   {allRevews?.map((revew) => {
                     return (
                       <RevewsDetails
@@ -177,7 +201,7 @@ const ServicesDetails = () => {
                       ></RevewsDetails>
                     );
                   })}
-                </div>
+                </div> */}
               </div>
             </div>
             {/* <div className="divider"></div> */}

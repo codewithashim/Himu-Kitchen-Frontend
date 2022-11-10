@@ -65,20 +65,13 @@ const Revews = ({ servicesId, service_name }) => {
               ></textarea>
             </div>
             <div className="mt-4">
-              <button
-                type="submit"
-                className="btn btn-warning"
-                value="Submit"
-              />
+              <button type="submit" className="btn btn-warning">
+                Submit
+              </button>
             </div>
           </form>
         </div>
         <div className="divider"></div>
-        <div>
-          <h2 className="text-2xl text-center font-bold text-yellow-400">
-            See All Revews
-          </h2>
-        </div>
       </section>
     </>
   );
