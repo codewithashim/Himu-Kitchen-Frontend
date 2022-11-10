@@ -33,7 +33,7 @@ const ServicesDetails = () => {
       .then((res) => res.json())
       .then((data) => setRevews(data));
     forceUpdate();
-  }, [servicesId,forceRender]);
+  }, [servicesId, forceRender]);
 
   const allRevews = revews.data;
 
@@ -168,6 +168,7 @@ const ServicesDetails = () => {
               <div>
                 <div className="divider"></div>
                 <div>
+    
                   {allRevews?.map((revew) => {
                     return (
                       <RevewsDetails
