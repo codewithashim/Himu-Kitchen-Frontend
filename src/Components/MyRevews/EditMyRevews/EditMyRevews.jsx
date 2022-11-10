@@ -19,7 +19,7 @@ const EditMyRevews = () => {
       revew: e.target.revews.value,
     };
 
-    fetch(`http://localhost:5000/reviews/${upateRevews?.data?._id}`, {
+    fetch(`https://himu-kitchen-server.vercel.app/reviews/${upateRevews?.data?._id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(Revews),

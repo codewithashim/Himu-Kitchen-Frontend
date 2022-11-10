@@ -17,7 +17,7 @@ const Searvices = () => {
   // const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/services?page=${page}&perPage=${perPage}`)
+    fetch(`https://himu-kitchen-server.vercel.app/services?page=${page}&perPage=${perPage}`)
       .then((res) => res.json())
       .then((data) => {
         setServices(data.services);

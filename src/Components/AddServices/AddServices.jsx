@@ -32,7 +32,7 @@ const AddServices = () => {
       service_provider_img,
     };
     const newService = { ...service };
-    fetch("http://localhost:5000/services", {
+    fetch("https://himu-kitchen-server.vercel.app/services", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newService),

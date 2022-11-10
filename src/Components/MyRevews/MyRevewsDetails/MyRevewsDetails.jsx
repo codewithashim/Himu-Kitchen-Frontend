@@ -16,7 +16,7 @@ const MyRevewsDetails = ({ revews, hendelDelete }) => {
   const [revewService, setRevewsService] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/services/${services}`)
+    fetch(`https://himu-kitchen-server.vercel.app/services/${services}`)
       .then((res) => res.json())
       .then((data) => setRevewsService(data.data));
   }, [services]);

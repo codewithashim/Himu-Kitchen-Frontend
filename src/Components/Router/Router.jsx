@@ -35,7 +35,7 @@ const route = createBrowserRouter([
       {
         path: "/services/:id",
         loader: ({ params }) => {
-          return fetch(`http://localhost:5000/services/${params.id}`);
+          return fetch(`https://himu-kitchen-server.vercel.app/services/${params.id}`);
         },
         element: <ServicesDetails></ServicesDetails>,
       },
@@ -82,7 +82,7 @@ const route = createBrowserRouter([
       {
         path: "editerevews/:id",
         loader: ({ params }) => {
-          return fetch(`http://localhost:5000/reviews/${params.id}`);
+          return fetch(`https://himu-kitchen-server.vercel.app/reviews/${params.id}`);
         },
         element: (
           <PrivetRoute>

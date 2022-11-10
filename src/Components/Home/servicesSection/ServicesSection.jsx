@@ -11,7 +11,7 @@ const ServicesSection = () => {
 
   useEffect(() => {
     return () => {
-      fetch("http://localhost:5000/servicelimit")
+      fetch("https://himu-kitchen-server.vercel.app/servicelimit")
         .then((res) => res.json())
         .then((data) => setServices(data.data));
     };

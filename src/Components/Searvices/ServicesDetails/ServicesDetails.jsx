@@ -28,7 +28,7 @@ const ServicesDetails = () => {
   const servicesId = _id;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?services=${servicesId}`)
+    fetch(`https://himu-kitchen-server.vercel.app/reviews?services=${servicesId}`)
       .then((res) => res.json())
       .then((data) => setRevews(data));
   }, [servicesId]);
