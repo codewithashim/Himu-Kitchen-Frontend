@@ -1,4 +1,4 @@
-.sliderImage:after {
+.heroImage:after {
     content: '';
     position: absolute;
     left: 0;
@@ -10,7 +10,7 @@
     /* W3C */
 }
 
-.sliderImage img {
+.heroImage img {
     width: 100vw;
     height: 100vh;
     object-fit: cover;

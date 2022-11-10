@@ -1,68 +1,39 @@
 import React from "react";
-import img1 from "../../../Assets/slider/slider_1.jpeg";
-import img2 from "../../../Assets/slider/slider_2.jpeg";
-import img3 from "../../../Assets/slider/slider_3.jpeg";
-import img4 from "../../../Assets/slider/slider_4.jpeg";
-import img5 from "../../../Assets/slider/slider_5.jpeg";
-import img6 from "../../../Assets/slider/slider_6.jpeg";
-import img7 from "../../../Assets/slider/slider_7.jpeg";
-
+import "./Hero.css";
 import "../Style/Home.css";
-import Slider from "./Slider";
-
-const bannerData = [
-  {
-    image: img1,
-    prev: 6,
-    id: 1,
-    next: 2,
-  },
-  {
-    image: img2,
-    prev: 1,
-    id: 2,
-    next: 3,
-  },
-  {
-    image: img3,
-    prev: 2,
-    id: 3,
-    next: 4,
-  },
-  {
-    image: img4,
-    prev: 3,
-    id: 4,
-    next: 5,
-  },
-  {
-    image: img5,
-    prev: 4,
-    id: 5,
-    next: 6,
-  },
-  {
-    image: img6,
-    prev: 5,
-    id: 6,
-    next: 7,
-  },
-  {
-    image: img7,
-    prev: 6,
-    id: 7,
-    next: 1,
-  },
-];
+import { Link } from "react-router-dom";
+import { FaPlayCircle, FaUtensils } from "react-icons/fa";
 
 const Hero = () => {
   return (
     <>
-      <div className="carousel w-full">
-        {bannerData.map((slide) => {
-          return <Slider key={slide.id} slide={slide}></Slider>;
-        })}
-      </div>
+      <section className="hero-Section">
+        <div className="w-full">
+          <div className="p-6 py-8 absolute top-24">
+            <h1 className="text-6xl font-bold text-white">
+              <span className="text-4xl mb-4"> Hey Wellcome to </span>
+              <br />
+              <span className="flex">
+                <span className="text-yellow-400 mx4 my4">Himu</span> Kitchen
+                <span className="text-yellow-400">
+                  <FaUtensils></FaUtensils>
+                </span>
+              </span>
+            </h1>
+            <p className="mt-4 text-white w-3/6">
+              I'm Himu ! I'm a professional chef and I have been cooking for 10
+              years. I have providign the best homemake food for my customers !!
+            </p>
+            <div className="flex gap-4 mt-6">
+              <Link className="btn btn-warning">See Recipe</Link>
+              <Link className="btn btn-warning btn-outline">
+                <FaPlayCircle className="mx-2 font-2xl"></FaPlayCircle> Watch
+                Video
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 };
