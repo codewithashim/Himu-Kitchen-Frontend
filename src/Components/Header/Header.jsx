@@ -104,6 +104,11 @@ const Header = () => {
                       </Link>
                     </li>
                     <li>
+                      <Link to="orders">
+                        <FaCheckSquare></FaCheckSquare> My Orders
+                      </Link>
+                    </li>
+                    <li>
                       <Link onClick={logout}>
                         <FaPowerOff></FaPowerOff> Logout
                       </Link>

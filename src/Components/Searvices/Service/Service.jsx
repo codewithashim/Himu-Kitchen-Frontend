@@ -76,7 +76,7 @@ const Service = ({ service }) => {
           </div>
           <div className="card-actions items-center gap-4 justify-end">
             <Link
-              to={`/order/${_id}`}
+              to={`/checkout/${_id}`}
               className="btn btn-warning btn-outline btn-sm"
             >
               Order Now

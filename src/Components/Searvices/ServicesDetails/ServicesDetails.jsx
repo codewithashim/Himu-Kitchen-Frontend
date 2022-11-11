@@ -29,7 +29,10 @@ const ServicesDetails = () => {
   const servicesId = _id;
 
   useEffect(() => {
-    fetch(`https://himu-kitchen-server.vercel.app/reviews?services=${_id}`)
+    fetch(
+      `https://himu-kitchen-server-codewithashim.vercel.app/reviews?services=${_id}`
+    )
+      // fetch(`https://himu-kitchen-server.vercel.app/reviews?services=${_id}`)
       .then((res) => res.json())
       .then((data) => {
         const revews = data;
@@ -78,7 +81,9 @@ const ServicesDetails = () => {
               </div>
             </div>
             <div className="card-actions">
-              <button className="btn btn-warning">Order Now</button>
+              <Link to={`/checkout/${_id}`}>
+                <button className="btn btn-warning">Order Now</button>
+              </Link>
             </div>
             <div className="flex gap-2 mt-2 justify-center items-center">
               <div className="rating">

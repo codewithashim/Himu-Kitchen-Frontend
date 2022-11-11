@@ -17,6 +17,8 @@ const serviceSectionDetails = ({ service }) => {
     service_provider_img,
   } = service;
 
+  console.log(service);
+
   return (
     <>
       <div className="card m-4 bg-base-100 shadow-xl">
