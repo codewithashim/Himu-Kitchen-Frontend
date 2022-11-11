@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FaUtensils } from "react-icons/fa";
-// import { AuthContext } from "../../Context/UserContext";
 import useTitle from "../../Hooks/useTitle";
 import Service from "./Service/Service";
-import ClipLoader from "react-spinners/ClipLoader";
+import Spinner from "../Spinner/Spinner";
 
 const Searvices = () => {
   useTitle("Services");
@@ -20,7 +19,7 @@ const Searvices = () => {
     setLoader(true);
     setTimeout(() => {
       setLoader(false);
-    }, 5000);
+    }, 4000);
   }, []);
 
   useEffect(() => {
@@ -37,9 +36,7 @@ const Searvices = () => {
   return (
     <>
       {loader ? (
-        <div style={{width:"100%", height:"100vh" , margin:"0 auto"}} className="text-center mx-auto mt-10">
-          <ClipLoader color={"#FEBE8C"} loading={loader} size={40} />
-        </div>
+        <Spinner></Spinner>
       ) : (
         <section className="p-4">
           <div className="servicesTitle">

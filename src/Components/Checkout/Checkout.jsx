@@ -4,8 +4,10 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/UserContext";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import useTitle from "../../Hooks/useTitle";
 
 const Checkout = () => {
+  useTitle("Checkout");
   const services = useLoaderData();
   const { user } = useContext(AuthContext);
   const {

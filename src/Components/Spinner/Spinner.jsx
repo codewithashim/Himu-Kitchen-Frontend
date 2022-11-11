@@ -3,8 +3,16 @@ import Loading from "../../Assets/loader.gif";
 
 const Spinner = () => {
   return (
-    <div className="w-full h-full mx-auto">
-      <img src={Loading} alt="Loading....." />
+    <div
+      style={{
+        width: "100%",
+        marginTop: "3rem",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <img src={Loading} alt="Loading....." style={{ width: "30%" }} />
     </div>
   );
 };
